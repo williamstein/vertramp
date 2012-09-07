@@ -1,1 +1,1 @@
-See (vertramp.org)[http://vertramp.org].
+See http://vertramp.org.
