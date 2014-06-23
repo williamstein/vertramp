@@ -1,3 +1,20 @@
-git commit -a -v
-git push
-ssh vertramp@sage.math.washington.edu "cd www; git pull"
+#!/bin/bash
+
+#git commit -a -v
+#git push
+
+# ssh vertramp@sage.math.washington.edu "cd www; git pull"
+
+echo -e "Updating www-uw-1"
+rsync -avzhP --delete \
+   --exclude '.git*' --exclude '*push*' \
+   --password-file=/home/sagemath/.rsync_pwfile \
+   /home/vertramp/www/ \
+   rsync://joraconAildo@www-uw-1.sagedev.org/vhosts/vertramp.org/
+
+echo -e "\n\nUpdating www-uw-2"
+rsync -avzhP --delete \
+   --exclude '.git*' --exclude '*push*' \
+   --password-file=/home/sagemath/.rsync_pwfile \
+   /home/vertramp/www/ \
+   rsync://joraconAildo@www-uw-2.sagedev.org/vhosts/vertramp.org/
